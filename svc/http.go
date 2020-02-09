@@ -31,10 +31,9 @@ func httpService(p chan int) error {
 			w.Write([]byte("Random data: " + uuid))
 		},
 	)
-	log.Printf("Service on port: %v", l.Addr().(*net.TCPAddr).Port)
+	// log.Printf("Service on port: %v", l.Addr().(*net.TCPAddr).Port)
 	p <- l.Addr().(*net.TCPAddr).Port
 	for {
-		log.Println("starting http serve")
 		err := http.Serve(l, nil)
 		log.Printf("%v\n", err)
 	}
